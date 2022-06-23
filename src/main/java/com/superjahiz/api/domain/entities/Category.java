@@ -19,8 +19,8 @@ import javax.persistence.*;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(unique = true)
+    private long id;
+    @Column(unique = true,nullable = false)
     private String name;
     private String pictureUrl;
 }
