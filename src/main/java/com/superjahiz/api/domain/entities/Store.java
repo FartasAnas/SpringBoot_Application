@@ -19,7 +19,7 @@ import java.util.List;
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String domainName;
     private String logoUrl;
     private String accentColor;

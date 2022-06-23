@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Picture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String url;
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIncludeProperties(value = {"id","name"})

@@ -17,17 +17,17 @@ import javax.persistence.*;
 public class OrderLine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderId")
     @JsonBackReference
     private UserOrder order;
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIdentityInfo(scope = Product.class,generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-    @JsonIncludeProperties(value = {"id","name","description","price","inStock","sold"})
+    @JsonIncludeProperties(value = {"id","name","description","price","inStock","sold","pictures"})
     @JoinColumn(name = "productId")
     private Product product;
 
-    private int quantity;
+    private Long quantity;
     private float total;
 }

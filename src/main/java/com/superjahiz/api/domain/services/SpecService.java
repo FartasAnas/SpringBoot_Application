@@ -14,7 +14,6 @@ public class SpecService {
 
     // Post Methods
     public void addSpec(Spec spec) {
-        System.out.println("Adding spec: " + spec);
         specRepository.save(spec);
     }
 

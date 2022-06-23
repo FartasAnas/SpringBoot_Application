@@ -19,12 +19,12 @@ import javax.persistence.*;
 public class Spec {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private String content;
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIncludeProperties(value = {"id","name"})
-    @JoinColumn(name = "productId", referencedColumnName ="id")
+    @JoinColumn(name = "productId")
     private Product product;
 
 }

@@ -20,7 +20,7 @@ import java.util.List;
 public class UserOrder implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String shippingAddress;
     private double totalPrice;
     @ManyToOne(fetch = FetchType.LAZY)

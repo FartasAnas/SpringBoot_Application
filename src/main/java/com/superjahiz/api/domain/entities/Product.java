@@ -19,12 +19,12 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private String description;
     private float price;
-    private long inStock;
-    private long sold;
+    private Long inStock;
+    private Long sold;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "StoreId")
     @JsonIncludeProperties(value = {"id","domainName","logoUrl","accentColor","contrastColor"})
@@ -36,13 +36,14 @@ public class Product {
     private Category category;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<OrderLine> orderLines = new ArrayList<OrderLine>();
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIncludeProperties(value = {"id","url"})
     private List<Picture> pictures = new ArrayList<Picture>();
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIncludeProperties(value = {"id","name","content"})
     private List<Spec> specs = new ArrayList<Spec>();
 }
