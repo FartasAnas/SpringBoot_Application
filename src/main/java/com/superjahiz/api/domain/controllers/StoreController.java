@@ -3,6 +3,7 @@ package com.superjahiz.api.domain.controllers;
 import com.superjahiz.api.domain.entities.Store;
 import com.superjahiz.api.domain.services.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/store")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class StoreController {
     @Autowired
     private StoreService storeService;

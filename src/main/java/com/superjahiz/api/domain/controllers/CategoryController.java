@@ -3,6 +3,7 @@ package com.superjahiz.api.domain.controllers;
 import com.superjahiz.api.domain.entities.Category;
 import com.superjahiz.api.domain.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +24,12 @@ public class CategoryController {
     }
 
     // Get Methods
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @RequestMapping("/all")
     public List<Category> getAllCategories() {
         return categoryService.getAllCategories();
     }
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @RequestMapping("/{id}")
     public Category getCategoryById(@PathVariable("id") long id) {
         return categoryService.getCategoryById(id);

@@ -32,7 +32,7 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId")
-    @JsonIncludeProperties(value = {"id","quantity","total"})
+    @JsonIncludeProperties(value = {"id","name"})
     private Category category;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)

@@ -3,6 +3,7 @@ package com.superjahiz.api.domain.controllers;
 import com.superjahiz.api.domain.entities.UserOrder;
 import com.superjahiz.api.domain.services.UserOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/userOrder")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class UserOrderController {
     @Autowired
     private UserOrderService userOrderService;
 
     // Post Methods
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @RequestMapping("/add")
     public void addUserOrder(@RequestBody UserOrder userOrder) {
         userOrderService.addUserOrder(userOrder);

@@ -3,6 +3,7 @@ package com.superjahiz.api.domain.controllers;
 import com.superjahiz.api.domain.entities.Spec;
 import com.superjahiz.api.domain.services.SpecService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/spec")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class SpecController {
     @Autowired
     private SpecService specService;

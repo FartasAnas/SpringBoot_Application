@@ -32,7 +32,7 @@ public class AppUser {
     private String firstName;
     private String lastName;
     private String phone;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<Role>();
 
     @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
